@@ -1,9 +1,9 @@
 /* 321雅各書講義 · Service Worker（離線可用）
    版本字串在每次 make_site.py 重新打包時都會變，
    一變就會清掉舊快取、重新抓一份新的，使用者不必手動清除。 */
-const V = '雅各書-gx11202610140711-tri10171929';
+const V = '321-jas-7f9d87319076';
 const SHELL = [
-  './', './index.html', './manifest.webmanifest',
+  './', './index.html', './sc.html', './en.html', './manifest.webmanifest', './manifest-en.webmanifest',
   './icon-192.png', './icon-512.png',
   './icon-180.png', './icon-167.png',
   './icon-152.png', './icon-120.png',
@@ -15,7 +15,7 @@ self.addEventListener('install', e => {
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks =>
-    Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))
+    Promise.all(ks.filter(k => k !== V && /^321-jas-|^jas-en-|[^\x00-\x7f]/.test(k)).map(k => caches.delete(k)))
   ).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {
