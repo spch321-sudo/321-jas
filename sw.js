@@ -1,7 +1,7 @@
 /* 321雅各書講義 · Service Worker（離線可用）
    版本字串在每次 make_site.py 重新打包時都會變，
    一變就會清掉舊快取、重新抓一份新的，使用者不必手動清除。 */
-const V = '321-jas-7f9d87319076-1018-gxa1019-meet1020-gx1021b';
+const V = '321-jas-7f9d87319076-1018-gxa1019-meet1020-gx1021c';
 const SHELL = [
   './', './index.html', './sc.html', './en.html', './manifest.webmanifest', './manifest-en.webmanifest',
   './icon-192.png', './icon-512.png',
